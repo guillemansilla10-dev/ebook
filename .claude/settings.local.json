@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/designali-in/shader-animation\")"
+    ]
+  }
+}
