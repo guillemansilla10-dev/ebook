@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+
+
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-normal.woff2") format("woff2");font-weight:300;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-italic.woff2") format("woff2");font-weight:300;font-style:italic}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Space Mono";src:url("assets/fonts/space-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+
+    
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:#f4eee3; }
+      #root { position:relative; width:1080px; height:1920px; overflow:hidden; background:#f4eee3; color:#2b2326; font-family:"DM Sans",sans-serif; font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; }
+      .shot { position:absolute; inset:0; background:#f4eee3; }
+      .abs { position:absolute; }
+      .serif { font-family:"Cormorant Garamond",serif; font-weight:300; line-height:1; }
+      .center { position:absolute; left:0; right:0; text-align:center; }
+      .lab { position:absolute; left:0; right:0; text-align:center; font-family:"Space Mono",monospace; font-size:30px; letter-spacing:0.32em; text-transform:uppercase; color:#7c5360; }
+      .dia { position:absolute; left:0; right:0; top:520px; text-align:center; font-family:"Space Mono",monospace; font-size:40px; letter-spacing:0.5em; color:#7c5360; }
+      .num { position:absolute; left:0; right:0; top:560px; text-align:center; font-size:440px; }
+      .state { position:absolute; left:0; right:0; top:1070px; text-align:center; font-size:140px; font-style:italic; }
+      .dots { position:absolute; left:0; right:0; top:1330px; display:flex; justify-content:center; gap:30px; }
+      .dot { width:30px; height:30px; border-radius:50%; border:2px solid #7c5360; display:block; }
+      .dot.on { background:#7c5360; }
+      .dot.pale { background:#c9b3ba; }
+      .ch { display:inline-block; }
+      .strike { position:absolute; left:250px; width:580px; top:860px; height:9px; border-radius:5px; background:#7c5360; transform-origin:0% 50%; }
+      .box { position:absolute; left:90px; width:900px; top:1020px; height:300px; border-radius:36px; background:#7c5360; color:#f4eee3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; }
+      #b1 { font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:300; font-size:100px; line-height:1; }
+      #b2 { font-family:"Space Mono",monospace; font-size:32px; letter-spacing:0.32em; text-transform:uppercase; color:#ecdadc; }
+      .foot { position:absolute; left:80px; right:80px; top:1500px; border-top:2px solid #cfc6bb; padding-top:22px; display:flex; justify-content:space-between; font-family:"Space Mono",monospace; font-size:22px; letter-spacing:0.3em; text-transform:uppercase; color:#736a6b; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="11.0" data-width="1080" data-height="1920">
+    <section id="s1" class="clip shot" data-start="0.0" data-duration="1.1667" data-track-index="1">
+      <div id="q1" class="center serif" style="top:700px;font-size:170px;font-style:italic">¿Te suena?</div>
+      <div id="q1l" class="lab" style="top:1000px">El patrón de siempre</div>
+      <div class="foot"><span>Constante</span><span>El patrón</span></div>
+    </section>
+    <section id="s2" class="clip shot" data-start="1.1667" data-duration="1.2" data-track-index="1">
+      <div class="lab" style="top:300px">¿Te suena?</div>
+      <div class="dia">DÍA</div>
+      <div id="n2" class="num serif">1</div>
+      <div id="w2" class="state serif">magia.</div>
+      <div id="dots2" class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="foot"><span>Constante</span><span>El patrón</span></div>
+    </section>
+    <section id="s3" class="clip shot" data-start="2.3667" data-duration="1.2" data-track-index="1">
+      <div class="lab" style="top:300px">¿Te suena?</div>
+      <div class="dia">DÍA</div>
+      <div id="n3" class="num serif">4</div>
+      <div id="w3" class="state serif">aflojas.</div>
+      <div id="dots3" class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on pale"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="foot"><span>Constante</span><span>El patrón</span></div>
+    </section>
+    <section id="s4" class="clip shot" data-start="3.5667" data-duration="1.3333" data-track-index="1">
+      <div class="lab" style="top:300px">¿Te suena?</div>
+      <div class="dia">DÍA</div>
+      <div id="n4" class="num serif">7</div>
+      <div id="w4" class="state serif" style="color:#7c5360"><span class="ch">d</span><span class="ch">e</span><span class="ch">s</span><span class="ch">a</span><span class="ch">p</span><span class="ch">a</span><span class="ch">r</span><span class="ch">e</span><span class="ch">c</span><span class="ch">i</span><span class="ch">s</span><span class="ch">t</span><span class="ch">e</span><span class="ch">.</span></div>
+      <div id="dots4" class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="foot"><span>Constante</span><span>El patrón</span></div>
+    </section>
+    <section id="s5" class="clip shot" data-start="4.9" data-duration="2.1333" data-track-index="1">
+      <div class="lab" style="top:330px">La verdad</div>
+      <div id="t5a" class="center serif" style="top:600px;font-size:140px">No te falta</div>
+      <div id="t5b" class="center serif" style="top:760px;font-size:190px;font-style:italic">disciplina.</div>
+      <div id="strike" class="strike"></div>
+      <div class="foot"><span>Constante</span><span>La verdad</span></div>
+    </section>
+    <section id="s6" class="clip shot" data-start="7.0333" data-duration="1.8" data-track-index="1">
+      <div class="lab" style="top:330px">La verdad</div>
+      <div id="t6a" class="center serif" style="top:560px;font-size:140px">Te falta un</div>
+      <div id="t6b" class="center serif" style="top:720px;font-size:280px;font-style:italic;color:#7c5360">sistema.</div>
+      <svg id="arr" class="abs" style="left:0;top:0;width:1080px;height:1920px" viewBox="0 0 1080 1920"><path id="arrp" d="M 300 1180 L 780 1180" stroke="#7c5360" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="480" stroke-dashoffset="0"/></svg>
+      <div id="t6c" class="lab" style="top:1260px">21 días · 3 fases · 10 min al día</div>
+      <div class="foot"><span>Constante</span><span>La verdad</span></div>
+    </section>
+    <section id="s7" class="clip shot" data-start="8.8333" data-duration="2.1667" data-track-index="1">
+      <div id="wm" class="center" style="top:520px;font-family:'Space Mono',monospace;font-size:92px;letter-spacing:0.28em;padding-left:0.28em">CONSTANTE</div>
+      <div id="sub" class="center serif" style="top:650px;font-size:84px;font-style:italic">Método de 21 días</div>
+      <div id="tag" class="center serif" style="top:790px;font-size:58px;color:#6b5f62">Para la mujer que termina lo que promete.</div>
+      <div id="box" class="box"><div id="b1">Descárgalo hoy</div><div id="b2">Link en bio</div></div>
+      <div class="foot"><span>Constante</span><span>Método de 21 días</span></div>
+    </section>
+      <audio id="jingle" src="assets/audio/constante-jingle.mp3" data-start="0" data-duration="10.08" data-track-index="10" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      const E = "power3.out";
+      // S1
+      tl.fromTo("#q1", {opacity:0, y:40}, {opacity:1, y:0, duration:0.6, ease:E}, 0.1);
+      tl.fromTo("#q1l", {opacity:0}, {opacity:1, duration:0.5}, 0.55);
+      // S2-S3: hard cut lands the number; state word follows on the next pluck
+      [["#n2","#w2",1.1667],["#n3","#w3",2.3667],["#n4","#w4",3.5667]].forEach(([n,w,t]) => {
+        tl.fromTo(n, {opacity:0, y:50, filter:"blur(10px)"}, {opacity:1, y:0, filter:"blur(0px)", duration:0.35, ease:E}, t);
+        tl.fromTo(w, {opacity:0, y:24}, {opacity:1, y:0, duration:0.45, ease:E}, t + 0.15);
+      });
+      // S4: anticipation — everything fades into the drop
+      tl.to("#w4 .ch", {opacity:0.1, y:-6, duration:0.3, stagger:0.06, ease:"power2.out"}, 3.5667+0.45);
+      tl.to("#n4", {opacity:0.2, duration:0.8, ease:"power2.out"}, 3.5667+0.6);
+      // S5: DROP — punch in, strike on the 5.83s hit
+      tl.fromTo("#t5a", {opacity:0, scale:1.08}, {opacity:1, scale:1, duration:0.3, ease:E}, 4.9);
+      tl.fromTo("#t5b", {opacity:0, scale:1.08}, {opacity:1, scale:1, duration:0.3, ease:E}, 4.9+0.06);
+      tl.fromTo("#strike", {scaleX:0}, {scaleX:1, duration:0.28, ease:"power2.out"}, 5.8333);
+      tl.to(["#t5a","#t5b"], {opacity:0.38, duration:0.4, ease:E}, 5.8333+0.15);
+      // S6: big hit 7.04 = cut; "sistema." lands on 7.37; arrow on 8.23
+      tl.fromTo("#t6a", {opacity:0, y:30}, {opacity:1, y:0, duration:0.3, ease:E}, 7.0333);
+      tl.fromTo("#t6b", {opacity:0, scale:0.9, y:40}, {opacity:1, scale:1, y:0, duration:0.45, ease:E}, 7.3667);
+      tl.fromTo("#arrp", {attr:{"stroke-dashoffset":480}}, {attr:{"stroke-dashoffset":0}, duration:0.35, ease:"power2.out"}, 8.2333);
+      tl.fromTo("#t6c", {opacity:0, y:16}, {opacity:1, y:0, duration:0.35, ease:E}, 8.2333+0.1);
+      // S7: CTA — wordmark on cut 8.83, callout on the final hit 9.40
+      tl.fromTo("#wm", {opacity:0, scale:1.1, filter:"blur(8px)"}, {opacity:1, scale:1, filter:"blur(0px)", duration:0.4, ease:E}, 8.8333);
+      tl.fromTo("#sub", {opacity:0, y:20}, {opacity:1, y:0, duration:0.4, ease:E}, 8.8333+0.15);
+      tl.fromTo("#tag", {opacity:0}, {opacity:1, duration:0.4}, 8.8333+0.3);
+      tl.fromTo("#box", {opacity:0, y:60, scale:0.96}, {opacity:1, y:0, scale:1, duration:0.45, ease:E}, 9.4);
+      tl.fromTo("#b2", {opacity:0}, {opacity:1, duration:0.3}, 9.4+0.2);
+      tl.set({}, {}, 11.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
