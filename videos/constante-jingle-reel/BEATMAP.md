@@ -37,6 +37,8 @@
 1. `git pull` en tu carpeta `ebook`.
 2. En After Effects: **Archivo → Secuencias de comandos → Ejecutar archivo de script…** → `videos/constante-jingle-reel/ae/build_comp.jsx`.
    Crea la comp 1080×1920 / 30 fps / 11 s con BG crema, el jingle, la capa GUIDE (el animatic, que no se renderiza) y un marcador en cada corte (rojo) y golpe (verde).
-3. En Claude Code (abierto desde `ebook`), pega:
+3. **Opción rápida, sin agente:** ejecuta también `videos/constante-jingle-reel/ae/build_scenes.jsx`. Construye las 7 pre-comps con todos los acentos, la textura de papel, el push-in del drop, motion blur y la sombra del CTA; hace un backup del .aep y exporta un PNG por marcador a `renders/ae_frames/`.
+   Necesita las fuentes instaladas: Cormorant Garamond (Light, Light Italic), **Cormorant Infant Light** (para los números con cifras alineadas) y Space Mono.
+4. **Opción con agente:** en Claude Code (abierto desde `ebook`), pega:
 
 > Lee `MOTION.md` y `videos/constante-jingle-reel/BEATMAP.md` enteros. En After Effects ya existe la comp "CONSTANTE — Reel jingle" con marcadores: rojo = CORTE, verde = GOLPE. Construye las 7 escenas como pre-comps `S01_HOOK` … `S07_CTA`, cada una empezando exactamente en su marcador de CORTE, con corte seco. Cada acento de la tabla tiene que arrancar en su marcador de GOLPE. Usa capas de texto y formas nativas, la paleta y tipografías de MOTION.md (cifras alineadas), entradas de 0,3–0,45 s con frenada larga (influencia entrante del 80 %) y motion blur. Toma la capa GUIDE como referencia de layout y tiempos. Haz un backup antes de editar y, al terminar, renderiza un fotograma en cada marcador para revisión.

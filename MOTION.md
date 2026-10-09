@@ -275,7 +275,7 @@ Cada pieza usa: etiqueta `DÍA 0X · FASE N` + footer `CONSTANTE · {fase}`. El 
 
 ### After Effects (MCP local)
 - **Composición:** 1080 × 1920, 30 fps, duración según la estructura de la sección 7. Fondo `#f4eee3`.
-- **Fuentes instaladas en Windows (TTF):** Cormorant Garamond (Light, Light Italic, Regular, Italic), DM Sans (Regular, Medium), Space Mono (Regular). Descarga en fonts.google.com.
+- **Fuentes instaladas en Windows (TTF):** Cormorant Garamond (Light, Light Italic, Regular, Italic), DM Sans (Regular, Medium), Space Mono (Regular), y **Cormorant Infant Light** para números grandes: es la misma familia, pero con cifras alineadas por defecto (en AE no se puede activar `lnum` por script). Descarga en fonts.google.com.
 - **Motion blur** activado en capas y composición. Ángulo de obturador 180°.
 - **Estructura de capas:** `BG` · `FOOTER` (hairline + textos) · una pre-comp por escena · `GUIDE` (render de HyperFrames como capa guía, oculta en el render).
 - **Nombres:** `S01_HOOK`, `S02_GIRO`… y capas en minúscula descriptiva (`titulo`, `nodo_culpa`, `flecha_up`).
