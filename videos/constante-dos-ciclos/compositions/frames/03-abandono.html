@@ -1,0 +1,83 @@
+<template>
+  <style>
+
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-normal.woff2") format("woff2");font-weight:300;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-italic.woff2") format("woff2");font-weight:300;font-style:italic}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Space Mono";src:url("assets/fonts/space-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+
+    #root { position:absolute; inset:0; width:1080px; height:1920px; overflow:hidden; font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; color:#2b2326; font-family:"DM Sans",sans-serif; }
+    .f03-bg { position:absolute; inset:0; background:#f4eee3; }
+    .f03-abs { position:absolute; }
+    .f03-label { font-family:"Space Mono",monospace; font-size:30px; letter-spacing:0.32em; text-transform:uppercase; color:#7c5360; }
+    .f03-serif { font-family:"Cormorant Garamond",serif; font-weight:300; line-height:1.0; }
+    .f03-foot { position:absolute; left:80px; right:80px; top:1500px; border-top:2px solid #cfc6bb; padding-top:22px; display:flex; justify-content:space-between; font-family:"Space Mono",monospace; font-size:22px; letter-spacing:0.3em; text-transform:uppercase; color:#736a6b; }
+
+    #f03-tag { left:80px; top:250px; }
+    #f03-title { left:80px; right:80px; top:300px; font-size:104px; }
+    #f03-ring { left:220px; top:610px; width:640px; height:640px; overflow:visible; }
+    #f03-orbit { left:220px; top:610px; width:640px; height:640px; }
+    #f03-dot { position:absolute; left:304px; top:-16px; width:32px; height:32px; border-radius:50%; background:#7c5360; }
+    .f03-node { padding:20px 30px; background:#fcf8f1; border:2px solid #d9cec4; border-radius:22px; font-size:36px; font-weight:500; white-space:nowrap; color:#2b2326; }
+    #f03-center { left:290px; width:500px; top:810px; text-align:center; }
+    #f03-loop { font-family:"Cormorant Garamond",serif; font-size:170px; line-height:1; color:#7c5360; }
+    #f03-again { font-family:"Space Mono",monospace; font-size:26px; letter-spacing:0.22em; text-transform:uppercase; color:#7c5360; margin-top:6px; }
+
+  </style>
+  <div id="root" data-composition-id="03-abandono" data-width="1080" data-height="1920" data-duration="7.5">
+    <div id="f03-bg" class="clip f03-bg" data-start="0" data-duration="7.5" data-track-index="0"></div>
+    <div id="f03-stage" class="clip f03-stage" data-start="0" data-duration="7.5" data-track-index="1" style="position:absolute;inset:0">
+
+      <div id="f03-tag" class="f03-abs f03-label">El patrón</div>
+      <div id="f03-title" class="f03-abs f03-serif">El ciclo del <i>abandono</i></div>
+      <svg id="f03-ring" class="f03-abs" viewBox="0 0 640 640"><circle id="f03-circ" cx="320" cy="320" r="319" fill="none" stroke="#b4aea4" stroke-width="2.5" stroke-dasharray="2004.3" stroke-dashoffset="0"/></svg>
+      <div id="f03-orbit" class="f03-abs"><div id="f03-dot"></div></div>
+      <div id="f03-n0" class="f03-abs f03-node" style="left:540px;top:610px">Entusiasmo inicial</div>
+      <div id="f03-n1" class="f03-abs f03-node" style="left:844px;top:831px">Esfuerzo intenso</div>
+      <div id="f03-n2" class="f03-abs f03-node" style="left:728px;top:1189px">Agotamiento</div>
+      <div id="f03-n3" class="f03-abs f03-node" style="left:352px;top:1189px">Culpa</div>
+      <div id="f03-n4" class="f03-abs f03-node" style="left:236px;top:831px">Parálisis</div>
+      <div id="f03-center" class="f03-abs"><div id="f03-loop">↻</div><div id="f03-again">y de nuevo<br>al inicio</div></div>
+
+      <div id="f03-foot" class="f03-foot"><span>Constante</span><span>Los dos ciclos</span></div>
+    </div>
+  </div>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const E = "power3.out";
+
+      const P = "#f03-";
+      const NODE = {xPercent:-50, yPercent:-50};
+      tl.fromTo(P+"tag", {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:E}, 0.0);
+      tl.fromTo(P+"title", {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, ease:E}, 0.15);
+      tl.fromTo(P+"circ", {attr:{"stroke-dashoffset":2004.3}}, {attr:{"stroke-dashoffset":0}, duration:1.0, ease:"power2.inOut"}, 0.3);
+      tl.fromTo(P+"orbit", {opacity:0}, {opacity:1, duration:0.3}, 1.0);
+      const T0 = 1.0, STEP = 0.8;
+      for (let i = 0; i < 5; i++) {
+        const t = T0 + i * STEP;
+        if (i > 0) tl.to(P+"orbit", {rotation:72*i, duration:0.6, ease:"power2.inOut"}, t - 0.55);
+        tl.fromTo(P+"n"+i, {...NODE, opacity:0, scale:0.85}, {...NODE, opacity:1, scale:1, duration:0.55, ease:E}, t);
+      }
+      // darken the downward spiral
+      tl.to(P+"n3", {color:"#6b5f62", duration:0.4}, T0+3*STEP+0.3);
+      tl.to(P+"n4", {color:"#8a7f80", borderColor:"#cfc6bb", duration:0.4}, T0+4*STEP+0.3);
+      // back to start
+      tl.to(P+"orbit", {rotation:360, duration:0.8, ease:"power2.inOut"}, 4.9);
+      tl.to(P+"n0", {scale:1.08, borderColor:"#7c5360", duration:0.35, ease:E}, 5.6);
+      tl.to(P+"n0", {scale:1, duration:0.4, ease:"power2.out"}, 5.95);
+      tl.fromTo(P+"loop", {opacity:0, rotation:-120, scale:0.8}, {opacity:1, rotation:0, scale:1, duration:0.9, ease:E}, 5.3);
+      tl.fromTo(P+"again", {opacity:0, y:16}, {opacity:1, y:0, duration:0.6, ease:E}, 5.7);
+      tl.fromTo(P+"foot", {opacity:0}, {opacity:1, duration:0.6}, 0.3);
+
+      tl.set({}, {}, 7);
+      window.__timelines["03-abandono"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,85 @@
+<template>
+  <style>
+
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-normal.woff2") format("woff2");font-weight:300;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-italic.woff2") format("woff2");font-weight:300;font-style:italic}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Space Mono";src:url("assets/fonts/space-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+
+    #root { position:absolute; inset:0; width:1080px; height:1920px; overflow:hidden; font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; color:#2b2326; font-family:"DM Sans",sans-serif; }
+    .f01-bg { position:absolute; inset:0; background:#f4eee3; }
+    .f01-abs { position:absolute; }
+    .f01-label { font-family:"Space Mono",monospace; font-size:30px; letter-spacing:0.32em; text-transform:uppercase; color:#7c5360; }
+    .f01-serif { font-family:"Cormorant Garamond",serif; font-weight:300; line-height:1.0; }
+    .f01-foot { position:absolute; left:80px; right:80px; top:1500px; border-top:2px solid #cfc6bb; padding-top:22px; display:flex; justify-content:space-between; font-family:"Space Mono",monospace; font-size:22px; letter-spacing:0.3em; text-transform:uppercase; color:#736a6b; }
+
+    #f01-tag { left:0; right:0; top:300px; text-align:center; }
+    #f01-dia { left:0; right:0; top:520px; text-align:center; font-family:"Space Mono",monospace; font-size:40px; letter-spacing:0.5em; color:#7c5360; }
+    .f01-num { left:0; right:0; top:560px; text-align:center; font-size:440px; font-weight:300; font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; }
+    .f01-state { left:0; right:0; top:1070px; text-align:center; font-size:140px; font-style:italic; }
+    #f01-dots { left:0; right:0; top:1330px; display:flex; justify-content:center; gap:30px; }
+    .f01-dot { width:30px; height:30px; border-radius:50%; border:2px solid #7c5360; background:transparent; display:block; }
+    .f01-ch { display:inline-block; }
+
+  </style>
+  <div id="root" data-composition-id="01-hook" data-width="1080" data-height="1920" data-duration="6.5">
+    <div id="f01-bg" class="clip f01-bg" data-start="0" data-duration="6.5" data-track-index="0"></div>
+    <div id="f01-stage" class="clip f01-stage" data-start="0" data-duration="6.5" data-track-index="1" style="position:absolute;inset:0">
+
+      <div id="f01-tag" class="f01-abs f01-label">¿Te suena?</div>
+      <div id="f01-dia" class="f01-abs">DÍA</div>
+      <div id="f01-n1" class="f01-abs f01-serif f01-num">1</div>
+      <div id="f01-n4" class="f01-abs f01-serif f01-num">4</div>
+      <div id="f01-n7" class="f01-abs f01-serif f01-num">7</div>
+      <div id="f01-s1" class="f01-abs f01-serif f01-state">magia.</div>
+      <div id="f01-s4" class="f01-abs f01-serif f01-state" style="color:#6b5f62">aflojas.</div>
+      <div id="f01-s7" class="f01-abs f01-serif f01-state" style="color:#7c5360"><span class="f01-ch">d</span><span class="f01-ch">e</span><span class="f01-ch">s</span><span class="f01-ch">a</span><span class="f01-ch">p</span><span class="f01-ch">a</span><span class="f01-ch">r</span><span class="f01-ch">e</span><span class="f01-ch">c</span><span class="f01-ch">i</span><span class="f01-ch">s</span><span class="f01-ch">t</span><span class="f01-ch">e</span><span class="f01-ch">.</span></div>
+      <div id="f01-dots" class="f01-abs"><span id="f01-d0" class="f01-dot"></span><span id="f01-d1" class="f01-dot"></span><span id="f01-d2" class="f01-dot"></span><span id="f01-d3" class="f01-dot"></span><span id="f01-d4" class="f01-dot"></span><span id="f01-d5" class="f01-dot"></span><span id="f01-d6" class="f01-dot"></span></div>
+
+      <div id="f01-foot" class="f01-foot"><span>Constante</span><span>El patrón</span></div>
+    </div>
+  </div>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const E = "power3.out";
+
+      const P = "#f01-";
+      tl.fromTo(P+"tag", {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:E}, 0.0);
+      tl.fromTo(P+"dia", {opacity:0}, {opacity:1, duration:0.5, ease:E}, 0.1);
+      tl.fromTo(P+"n1", {opacity:0, y:60, filter:"blur(12px)"}, {opacity:1, y:0, filter:"blur(0px)", duration:0.8, ease:E}, 0.15);
+      tl.fromTo(P+"s1", {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, ease:E}, 0.6);
+      tl.fromTo(P+"dots", {opacity:0}, {opacity:1, duration:0.5, ease:E}, 0.8);
+      tl.fromTo(P+"d0", {backgroundColor:"rgba(124,83,96,0)"}, {backgroundColor:"rgba(124,83,96,1)", duration:0.4}, 1.0);
+      // hide later states at t=0 (seek-safe)
+      tl.set([P+"n4", P+"n7", P+"s4", P+"s7"], {opacity:0}, 0);
+      // swap -> day 4
+      const T4 = 1.9;
+      tl.to(P+"n1", {opacity:0, y:-60, filter:"blur(12px)", duration:0.35, ease:"power2.in"}, T4);
+      tl.to(P+"s1", {opacity:0, y:-20, duration:0.3, ease:"power2.in"}, T4);
+      tl.fromTo(P+"n4", {opacity:0, y:60, filter:"blur(12px)"}, {opacity:1, y:0, filter:"blur(0px)", duration:0.6, ease:E}, T4+0.3);
+      tl.fromTo(P+"s4", {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, ease:E}, T4+0.45);
+      tl.fromTo([P+"d1",P+"d2",P+"d3"], {backgroundColor:"rgba(124,83,96,0)"}, {backgroundColor:"rgba(124,83,96,0.75)", duration:0.3, stagger:0.12}, T4+0.35);
+      tl.to(P+"d3", {backgroundColor:"rgba(124,83,96,0.35)", duration:0.4}, T4+0.9);
+      // swap -> day 7
+      const T7 = 3.7;
+      tl.to(P+"n4", {opacity:0, y:-60, filter:"blur(12px)", duration:0.35, ease:"power2.in"}, T7);
+      tl.to(P+"s4", {opacity:0, y:-20, duration:0.3, ease:"power2.in"}, T7);
+      tl.fromTo(P+"n7", {opacity:0, y:60, filter:"blur(12px)"}, {opacity:1, y:0, filter:"blur(0px)", duration:0.6, ease:E}, T7+0.3);
+      tl.fromTo(P+"s7", {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, ease:E}, T7+0.45);
+      tl.to([P+"d0",P+"d1",P+"d2",P+"d3"], {backgroundColor:"rgba(124,83,96,0)", duration:0.35, stagger:-0.1}, T7+0.4);
+      tl.to("#f01-s7 .f01-ch", {opacity:0.12, y:-8, duration:0.35, stagger:0.06, ease:"power2.out"}, T7+1.2);
+      tl.to(P+"n7", {opacity:0.25, duration:1.0, ease:"power2.out"}, T7+1.3);
+      tl.fromTo(P+"foot", {opacity:0}, {opacity:1, duration:0.6}, 0.3);
+
+      tl.set({}, {}, 6);
+      window.__timelines["01-hook"] = tl;
+    })();
+  </script>
+</template>

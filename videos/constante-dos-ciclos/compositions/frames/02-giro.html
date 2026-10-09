@@ -1,0 +1,66 @@
+<template>
+  <style>
+
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-normal.woff2") format("woff2");font-weight:300;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-300-italic.woff2") format("woff2");font-weight:300;font-style:italic}
+@font-face{font-family:"Cormorant Garamond";src:url("assets/fonts/cormorant-garamond-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"DM Sans";src:url("assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal}
+@font-face{font-family:"Space Mono";src:url("assets/fonts/space-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+
+    #root { position:absolute; inset:0; width:1080px; height:1920px; overflow:hidden; font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; color:#2b2326; font-family:"DM Sans",sans-serif; }
+    .f02-bg { position:absolute; inset:0; background:#f4eee3; }
+    .f02-abs { position:absolute; }
+    .f02-label { font-family:"Space Mono",monospace; font-size:30px; letter-spacing:0.32em; text-transform:uppercase; color:#7c5360; }
+    .f02-serif { font-family:"Cormorant Garamond",serif; font-weight:300; line-height:1.0; }
+    .f02-foot { position:absolute; left:80px; right:80px; top:1500px; border-top:2px solid #cfc6bb; padding-top:22px; display:flex; justify-content:space-between; font-family:"Space Mono",monospace; font-size:22px; letter-spacing:0.3em; text-transform:uppercase; color:#736a6b; }
+
+    #f02-tag { left:0; right:0; top:300px; text-align:center; }
+    .f02-l { left:0; right:0; text-align:center; }
+    #f02-a { top:470px; font-size:120px; }
+    #f02-b { top:600px; font-size:160px; font-style:italic; }
+    #f02-strikewrap { left:250px; width:580px; top:705px; height:8px; }
+    #f02-strike { width:100%; height:8px; background:#7c5360; border-radius:4px; transform-origin:0% 50%; }
+    #f02-c { top:930px; font-size:120px; }
+    #f02-d { top:1060px; font-size:250px; font-style:italic; color:#7c5360; }
+    .f02-wd { display:inline-block; }
+
+  </style>
+  <div id="root" data-composition-id="02-giro" data-width="1080" data-height="1920" data-duration="5.5">
+    <div id="f02-bg" class="clip f02-bg" data-start="0" data-duration="5.5" data-track-index="0"></div>
+    <div id="f02-stage" class="clip f02-stage" data-start="0" data-duration="5.5" data-track-index="1" style="position:absolute;inset:0">
+
+      <div id="f02-tag" class="f02-abs f02-label">La verdad</div>
+      <div id="f02-a" class="f02-abs f02-serif f02-l"><span class="f02-wd">No</span> <span class="f02-wd">te</span> <span class="f02-wd">falta</span></div>
+      <div id="f02-b" class="f02-abs f02-serif f02-l">disciplina.</div>
+      <div id="f02-strikewrap" class="f02-abs"><div id="f02-strike"></div></div>
+      <div id="f02-c" class="f02-abs f02-serif f02-l">Te falta un</div>
+      <div id="f02-d" class="f02-abs f02-serif f02-l">sistema.</div>
+
+      <div id="f02-foot" class="f02-foot"><span>Constante</span><span>La verdad</span></div>
+    </div>
+  </div>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const E = "power3.out";
+
+      const P = "#f02-";
+      tl.fromTo(P+"tag", {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:E}, 0.0);
+      tl.fromTo("#f02-a .f02-wd", {opacity:0, y:40}, {opacity:1, y:0, duration:0.6, stagger:0.18, ease:E}, 0.15);
+      tl.fromTo(P+"b", {opacity:0, y:40}, {opacity:1, y:0, duration:0.7, ease:E}, 0.75);
+      tl.fromTo(P+"strike", {scaleX:0}, {scaleX:1, duration:0.6, ease:"power2.inOut"}, 1.7);
+      tl.to([P+"a", P+"b"], {opacity:0.38, duration:0.6, ease:E}, 2.1);
+      tl.fromTo(P+"c", {opacity:0, y:40}, {opacity:1, y:0, duration:0.6, ease:E}, 2.5);
+      tl.fromTo(P+"d", {opacity:0, y:50, scale:0.94}, {opacity:1, y:0, scale:1, duration:0.9, ease:E}, 2.9);
+      tl.fromTo(P+"foot", {opacity:0}, {opacity:1, duration:0.6}, 0.3);
+
+      tl.set({}, {}, 5);
+      window.__timelines["02-giro"] = tl;
+    })();
+  </script>
+</template>
