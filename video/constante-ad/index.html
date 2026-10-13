@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Constante — UGC ad 9:16</title>
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/Montserrat-VF.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-VF.ttf") format("truetype");
+        font-weight: 400 900;
+      }
+      :root {
+        --cream: #f6efe4;
+        --ink: #1d1814;
+        --terracotta: #b85c38;
+        --sand: #e7d9c4;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ink);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: "Montserrat", system-ui, sans-serif;
+      }
+
+      /* A-roll: the creator's avatar clip, full bleed. The wrapper carries the punch-in zooms. */
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 38%;
+      }
+      #avatar {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Subtitles: centered at ~65% height, clear of the bottom 15% and the right-edge app UI. */
+      .cap {
+        position: absolute;
+        left: 110px;
+        right: 130px;
+        top: 1120px;
+        height: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        gap: 0 22px;
+        text-align: center;
+      }
+      .w {
+        display: inline-block;
+        color: #fff;
+        font-weight: 900;
+        font-size: 86px;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        -webkit-text-stroke: 10px var(--ink);
+        paint-order: stroke fill;
+        text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      }
+      .hook .w {
+        font-size: 96px;
+      }
+      .w.accent {
+        color: #ffd7c2;
+      }
+      .emph {
+        display: inline-block;
+        background: var(--terracotta);
+        color: var(--cream);
+        font-weight: 900;
+        font-size: 92px;
+        line-height: 1.08;
+        padding: 10px 30px 16px;
+        border-radius: 18px;
+        box-shadow: 0 14px 40px rgba(60, 25, 10, 0.45);
+      }
+      .emph.big {
+        font-size: 150px;
+        padding: 10px 40px 20px;
+      }
+      .emph .num {
+        font-family: "Playfair Display", serif;
+        font-weight: 800;
+      }
+
+      /* Product reveal: soft cream wash so the cover reads, avatar still visible underneath. */
+      #wash {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(246, 239, 228, 0.92) 0%, rgba(246, 239, 228, 0.78) 55%, rgba(29, 24, 20, 0.35) 100%);
+      }
+      #book-wrap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 200px;
+        height: 860px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #book {
+        position: relative;
+        width: 560px;
+        height: 792px;
+        border-radius: 6px 14px 14px 6px;
+        overflow: hidden;
+        box-shadow:
+          0 40px 80px rgba(40, 22, 10, 0.45),
+          0 6px 16px rgba(40, 22, 10, 0.3);
+      }
+      #book img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      #book::before {
+        /* spine shading so it reads as a book, not a flat image */
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 28px;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.12) 60%, rgba(0, 0, 0, 0));
+        z-index: 1;
+      }
+
+      /* End card CTA */
+      #cta-wrap {
+        position: absolute;
+        left: 70px;
+        right: 90px;
+        top: 1130px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+      }
+      #cta-kicker {
+        font-weight: 700;
+        font-size: 38px;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        text-align: center;
+      }
+      #cta {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        background: var(--terracotta);
+        color: var(--cream);
+        font-weight: 900;
+        font-size: 64px;
+        padding: 28px 48px 32px;
+        border-radius: 999px;
+        box-shadow: 0 18px 44px rgba(120, 50, 20, 0.45);
+        white-space: nowrap;
+      }
+      #cta-arrow {
+        display: inline-block;
+        font-size: 64px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="10"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- A-roll (swap assets/avatar.mp4 for the real HeyGen export; keep the filename) -->
+      <div id="cam">
+        <video
+          id="avatar"
+          class="clip"
+          src="assets/avatar.mp4"
+          playsinline
+          data-has-audio="true"
+          data-start="0"
+          data-duration="10"
+          data-track-index="0"
+          data-volume="1"
+        ></video>
+      </div>
+
+      <!-- Product reveal layers -->
+      <div id="wash" class="clip" data-start="6.45" data-duration="3.55" data-track-index="1"></div>
+      <div id="book-wrap" class="clip" data-start="6.45" data-duration="3.55" data-track-index="2">
+        <div id="book"><img id="book-img" src="assets/cover.jpg" alt="Portada de Constante" /></div>
+      </div>
+
+      <!-- Subtitles (timings are estimates until the real voice is transcribed) -->
+      <div id="c1" class="cap hook clip" data-start="0" data-duration="0.75" data-track-index="3">
+        <span class="w">¿Cuántas</span><span class="w">veces</span>
+      </div>
+      <div id="c2" class="cap hook clip" data-start="0.75" data-duration="0.7" data-track-index="3">
+        <span class="w">empezaste</span><span class="w">algo</span>
+      </div>
+      <div id="c3" class="cap hook clip" data-start="1.45" data-duration="0.85" data-track-index="3">
+        <span class="w">y</span><span class="w">lo</span><span class="w">dejaste</span><span class="w accent">a</span><span class="w accent">medias?</span>
+      </div>
+      <div id="c4" class="cap clip" data-start="2.3" data-duration="0.9" data-track-index="3">
+        <span class="w">Con</span><span class="w">Constante,</span>
+      </div>
+      <div id="c5" class="cap clip" data-start="3.2" data-duration="0.55" data-track-index="3">
+        <span class="w">puedes</span>
+      </div>
+      <div id="c6" class="cap clip" data-start="3.75" data-duration="1.3" data-track-index="3">
+        <span class="emph" id="e-procras">dejar de procrastinar</span>
+      </div>
+      <div id="c7" class="cap clip" data-start="5.05" data-duration="0.7" data-track-index="3">
+        <span class="w">y</span><span class="w">empezar</span><span class="w">a</span><span class="w">cumplir</span>
+      </div>
+      <div id="c8" class="cap clip" data-start="5.75" data-duration="0.7" data-track-index="3">
+        <span class="w">tus</span><span class="w">metas.</span>
+      </div>
+      <div id="c9" class="cap clip" data-start="6.45" data-duration="0.9" data-track-index="3">
+        <span class="w">¡Conoce</span><span class="w">el</span><span class="w">método</span>
+      </div>
+      <div id="c10" class="cap clip" data-start="7.35" data-duration="1.25" data-track-index="3">
+        <span class="emph big" id="e-21"><span class="num">21</span> días</span>
+      </div>
+
+      <!-- End card -->
+      <div id="endcard" class="clip" data-start="8.6" data-duration="1.4" data-track-index="4">
+        <div id="cta-wrap">
+          <div id="cta-kicker">Ebook · Método de 21 días</div>
+          <div id="cta"><span>Descubre Constante</span><span id="cta-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Hook: scroll-stopping punch-in on frame 1, then UGC-style jump-cut punches.
+      tl.fromTo("#cam", { scale: 1.18 }, { scale: 1.0, duration: 0.35, ease: "power3.out" }, 0);
+      tl.set("#cam", { scale: 1.07 }, 1.45);
+      tl.set("#cam", { scale: 1.0 }, 2.3);
+      tl.set("#cam", { scale: 1.1 }, 3.75);
+      tl.set("#cam", { scale: 1.0 }, 5.05);
+
+      // Word-by-word pop-in for every plain caption group.
+      const pops = {
+        c1: [0.0, 0.38],
+        c2: [0.75, 1.12],
+        c3: [1.45, 1.55, 1.68, 1.95, 2.05],
+        c4: [2.3, 2.5],
+        c5: [3.2],
+        c7: [5.05, 5.15, 5.4, 5.48],
+        c8: [5.75, 5.95],
+        c9: [6.45, 6.75, 6.85],
+      };
+      Object.entries(pops).forEach(([id, times]) => {
+        document.querySelectorAll("#" + id + " .w").forEach((el, i) => {
+          tl.fromTo(
+            el,
+            { opacity: 0, scale: 0.6, y: 18 },
+            { opacity: 1, scale: 1, y: 0, duration: 0.16, ease: "back.out(2.5)" },
+            times[i] ?? times[times.length - 1],
+          );
+        });
+      });
+
+      // Emphasis 1: "dejar de procrastinar" stamps in with an overshoot and a tilt.
+      tl.fromTo(
+        "#e-procras",
+        { opacity: 0, scale: 1.6, rotation: -6 },
+        { opacity: 1, scale: 1, rotation: -2, duration: 0.28, ease: "back.out(2)" },
+        3.75,
+      );
+      tl.to("#e-procras", { scale: 1.06, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.05);
+
+      // Emphasis 2: "21 días" — the biggest beat in the ad.
+      tl.fromTo(
+        "#e-21",
+        { opacity: 0, scale: 2.2, rotation: 4 },
+        { opacity: 1, scale: 1, rotation: -2, duration: 0.32, ease: "back.out(2.2)" },
+        7.35,
+      );
+      tl.to("#e-21", { scale: 1.08, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 7.7);
+
+      // Product reveal: wash fades up, the book rises in with a slight 3D tilt and settles.
+      tl.fromTo("#wash", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 6.45);
+      tl.fromTo(
+        "#book",
+        { opacity: 0, y: 260, rotation: 8, scale: 0.85 },
+        { opacity: 1, y: 0, rotation: -3, scale: 1, duration: 0.55, ease: "back.out(1.6)" },
+        6.45,
+      );
+      tl.to("#book", { rotation: 0, scale: 1.03, duration: 2.9, ease: "sine.inOut" }, 7.0);
+
+      // End card CTA.
+      tl.fromTo("#cta-kicker", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, 8.6);
+      tl.fromTo(
+        "#cta",
+        { opacity: 0, scale: 0.7, y: 40 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2)" },
+        8.68,
+      );
+      tl.to("#cta", { scale: 1.05, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.15);
+      tl.fromTo("#cta-arrow", { x: 0 }, { x: 14, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.0);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
