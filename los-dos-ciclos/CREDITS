@@ -1,0 +1,9 @@
+Los dos ciclos — third-party assets
+
+Music samples: clarinet from VS Chamber Orchestra: Community Edition (Versilian Studios / Sam Gossner),
+  github.com/sgossner/VSCO-2-CE — CC0 1.0
+Voice: Kokoro TTS v1.0 (hexgrad/Kokoro-82M via kokoro-onnx), voice "ef_dora" — Apache 2.0
+Fonts: Caveat (Impallari Type) and Sacramento (Astigmatic), Google Fonts — SIL Open Font License 1.1
+  (fonts/OFL-Caveat.txt, fonts/OFL-Sacramento.txt)
+Drawing, ink and paper engine adapted from the Lemo-Opuscar one-line style (MIT, github.com/lemomo-ai/lemo-opuscar)
+Pen, paper, tap and blot sounds: synthesised in code.

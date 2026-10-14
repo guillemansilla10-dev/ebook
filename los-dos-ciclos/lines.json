@@ -1,0 +1,10 @@
+[
+ {"id": "L1", "text": "Empiezas con todo.", "voice": "ef_dora", "speed": 0.95, "lang": "es"},
+ {"id": "L2", "text": "Te esfuerzas, te agotas, te culpas…", "voice": "ef_dora", "speed": 0.95, "lang": "es"},
+ {"id": "L2b", "text": "y vuelves al mismo punto.", "voice": "ef_dora", "speed": 0.95, "lang": "es"},
+ {"id": "L3", "text": "Hay otro ciclo.", "voice": "ef_dora", "speed": 0.92, "lang": "es"},
+ {"id": "L4", "text": "Una acción mínima. Una evidencia. Confianza.", "voice": "ef_dora", "speed": 0.95, "lang": "es"},
+ {"id": "L4b", "text": "Hasta que se convierte en quién eres.", "voice": "ef_dora", "speed": 0.95, "lang": "es"},
+ {"id": "L5", "text": "En veintiún días te mudas de un ciclo al otro.", "voice": "ef_dora", "speed": 1.0, "lang": "es"},
+ {"id": "L5b", "text": "No con fuerza de voluntad. Con un sistema.", "voice": "ef_dora", "speed": 0.95, "lang": "es"}
+]
